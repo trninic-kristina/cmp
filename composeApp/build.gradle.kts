@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.moko.multiplatform)
 }
 
 kotlin {
@@ -47,6 +48,18 @@ kotlin {
                 implementation(compose.components.resources)
             }
         }
+
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+            }
+        }
     }
 }
 
@@ -81,6 +94,11 @@ android {
     }
     dependencies {
         debugImplementation(libs.compose.ui.tooling)
+        commonMainApi(libs.bundles.moko.resources)
+    }
+
+    multiplatformResources {
+        multiplatformResourcesPackage = "org.example.project"
     }
 }
 
