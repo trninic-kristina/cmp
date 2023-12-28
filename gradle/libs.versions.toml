@@ -15,6 +15,8 @@ compose-compiler = "1.5.6"
 compose-plugin = "1.5.11"
 junit = "4.13.2"
 kotlin = "1.9.21"
+moko-version = "0.23.0"
+moko-mvvm = "0.16.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -32,9 +34,16 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material = { module = "androidx.compose.material:material", version.ref = "compose" }
+moko-classpath = { group = "dev.icerock.moko", name = "resources-generator", version.ref = "moko-version" }
+moko-resource = { group = "dev.icerock.moko", name = "resources", version.ref = "moko-version" }
+moko-resource-compose = { group = "dev.icerock.moko", name = "resources-compose", version.ref = "moko-version" }
+
+[bundles]
+moko-resources = ["moko-resource", "moko-resource-compose"]
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+moko-multiplatform = { id = "dev.icerock.mobile.multiplatform-resources", version.ref = "moko-version" }
