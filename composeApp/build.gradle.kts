@@ -30,22 +30,24 @@ kotlin {
 
     sourceSets {
 
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.compose.ui.tooling.preview)
-                implementation(libs.androidx.activity.compose)
-            }
-        }
         val commonMain by getting {
             dependencies {
                 implementation(project(":domain"))
                 implementation(project(":di"))
                 implementation(compose.runtime)
                 implementation(compose.foundation)
-                implementation(compose.material)
+                implementation(compose.material3)
                 implementation(compose.ui)
                 @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+            }
+        }
+
+        val androidMain by getting {
+            dependsOn(commonMain)
+            dependencies {
+                implementation(libs.compose.ui.tooling.preview)
+                implementation(libs.androidx.activity.compose)
             }
         }
 
