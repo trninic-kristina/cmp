@@ -48,7 +48,7 @@ fun LoginScreen() {
         topBar = {
             CenterAlignedTopAppBar(
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(Color.Transparent),
-                title = { Text(text = "Welcome Back", color = Color.White, fontSize = 42.sp) }
+                title = { Text(text = "Welcome Back", color = Color.White, fontSize = 35.sp) }
             )
         },
 
